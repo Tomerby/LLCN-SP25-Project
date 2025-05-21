@@ -33,6 +33,8 @@ int main(int argc, char *argv[]) {
     topology.withK(k).withP2P(p2p);
     topology.Build();
 
+    ///// START TCP APPLICATION /////
+
     uint16_t basePort = 50000; // Base port for applications
     std::vector<ApplicationContainer> sinkApps;
     std::vector<ApplicationContainer> sourceApps;
@@ -65,6 +67,8 @@ int main(int argc, char *argv[]) {
         sourceApp.Stop(Seconds(5.0));
 
     }  
+
+    ///// END TCP APPLICATION /////
     
     // Measure throughput on avarage in the system after 4 seconds of simulation
     Simulator::Schedule(Seconds(4.0), [sinkApps, senderRate]() {
